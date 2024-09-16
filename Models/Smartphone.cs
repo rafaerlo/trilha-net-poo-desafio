@@ -3,13 +3,9 @@ namespace DesafioPOO.Models
     public abstract class Smartphone
     {
         public string Numero { get; set; }
-        // TODO: Implementar as propriedades faltantes de acordo com o diagrama
-
-        public Smartphone(string numero)
-        {
-            Numero = numero;
-            // TODO: Passar os parâmetros do construtor para as propriedades
-        }
+        public string Modelo { get; set; }
+        public string IMEI { get; set; }
+        public int Memoria { get; set; }
 
         public void Ligar()
         {
@@ -19,6 +15,13 @@ namespace DesafioPOO.Models
         public void ReceberLigacao()
         {
             Console.WriteLine("Recebendo ligação...");
+        }
+
+        public override string ToString()
+        {
+            var tipo = this.GetType().ToString().Split(".");
+            int ultimoElemento = tipo.Length;
+            return $"Numero: {Numero}\nModelo: {Modelo}\nImei: {IMEI}\nMemoria: {Memoria}\nTipo: {tipo[ultimoElemento - 1]}";
         }
 
         public abstract void InstalarAplicativo(string nomeApp);
